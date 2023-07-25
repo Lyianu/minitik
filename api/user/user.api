@@ -1,0 +1,42 @@
+syntax = "v1"
+
+info (
+	title: "minitik HTTP user api"
+	desc: "HTTP api for minitik user registration and login"
+)
+
+type UserRegisterRequest {
+	Username string `form:"username"`
+	Password string `form:"password"`
+}
+
+type UserRegisterResponse {
+	StatusCode int32  `json:"status_code"`
+	StatusMsg  string `json:"status_msg"`
+	UserId     int64  `json:"user_id"`
+	Token      string `json:"token"`
+}
+
+type UserLoginRequest {
+	Username string `form:"username"`
+	Password string `form:"password"`
+}
+
+type UserLoginResponse {
+	StatusCode int32  `json:"status_code"`
+	StatusMsg  string `json:"status_msg"`
+	UserId     int64  `json:"user_id"`
+	Token      string `json:"token"`
+}
+
+@server (
+	prefix: /douyin/user
+)
+
+service user-api {
+	@handler UserRegister
+	post /register(UserRegisterRequest) returns(UserRegisterResponse)
+
+	@handler UserLogin
+	post /login(UserLoginRequest) returns(UserLoginResponse)
+}
