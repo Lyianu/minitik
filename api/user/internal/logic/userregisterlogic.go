@@ -2,8 +2,6 @@ package logic
 
 import (
 	"context"
-	"net/http"
-
 	"github.com/RaymondCode/simple-demo/api/user/internal/svc"
 	"github.com/RaymondCode/simple-demo/api/user/internal/types"
 
@@ -26,7 +24,7 @@ func NewUserRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *User
 
 func (l *UserRegisterLogic) UserRegister(req *types.UserRegisterRequest) (resp *types.UserRegisterResponse, err error) {
 	resp = &types.UserRegisterResponse{
-		StatusCode: http.StatusOK,
+		StatusCode: 0,
 		UserId:     1,
 		Token:      "abc",
 	}

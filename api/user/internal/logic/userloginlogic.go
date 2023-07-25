@@ -24,11 +24,11 @@ func NewUserLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserLog
 }
 
 func (l *UserLoginLogic) UserLogin(req *types.UserLoginRequest) (resp *types.UserLoginResponse, err error) {
-	resp = &types.UserLoginResponse{}
-	resp.UserId = 1
-
-	resp.Token = "abc"
-	resp.StatusCode = 200
+	resp = &types.UserLoginResponse{
+		UserId:     1,
+		Token:      "abc",
+		StatusCode: 0,
+	}
 
 	return
 }
